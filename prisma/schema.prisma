@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model dnd_races {
+  id                  Int     @id @default(autoincrement())
+  description         String
+}
+
+model dnd_race_traits {
+  id                Int    @id @default(autoincrement())
+  race_id           Int
+  trait_id          Int
+  description       String
+  subrace_id        Int
+}
+
+model dnd_subraces {
+  id                Int     @id @default(autoincrement())
+  race_id           Int
+  description       String
+}
+
+model dnd_traits {
+  id                Int     @id @default(autoincrement())
+  description       String
+}
